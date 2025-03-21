@@ -1,0 +1,15 @@
+promise class says jo mera first argument hah voh jab call hoga tabh jo  bhi humne call kia h using "then" would be called
+
+waitfor3s() {
+  setTimeout(main,3000);
+}
+
+setTimeoutPromisified(){
+  return new promise(waitfor3s);
+}
+
+function main() {
+  console.log("Main function called)
+}
+
+setTimeoutPromisified().then(main);
