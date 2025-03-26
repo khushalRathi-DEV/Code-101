@@ -94,7 +94,7 @@ abstract class _User_ {
   }
 
   abstract greet() : string;
-  hello = () => {
+  hello = () => {                     //abstract classes can have an default implementation ,but interfaces cannot
     console.log("hi there");
   }
 }
@@ -113,3 +113,5 @@ class _Employee_ extends _User_ {
 
 const user3 = new _Employee_("Khushal");
 user3.greet(); 
+
+
