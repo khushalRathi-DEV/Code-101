@@ -21,10 +21,10 @@ const sizeStyles = {
 }
 
 
-const defaultStyles = "rounded-md p-4 flex";
+const defaultStyles = "rounded-md p-4 flex font-light items-center justify-center";
 
 export const Button = (props : ButtonProps) => {
   return <button className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]} ${onclick = props.onClick}`}>
-    {props.startIcon ? <div className="pr-2">{props.startIcon    }</div> : null} {props.text} {props.endIcon ? <div className="pl-2">{props.endIcon}</div> : null}
+    {props.startIcon ? <div className="pr-2">{props.startIcon}</div> : null} {props.text} {props.endIcon ? <div className="pl-2">{props.endIcon}</div> : null}
   </button>
 }

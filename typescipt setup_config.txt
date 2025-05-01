@@ -1,0 +1,13 @@
+npm init -y // initialize a fresh ts project
+npm I typescript
+npx tsc --init // makes the tsconfig.json file 
+// now make the following changes in the tsconfig.json file
+make the
+	1)"rootDir" : "./src",
+	2)"outDir"  : "./dist",
+	3) create a new folder src
+		* make a index.ts folder inside and write all oyur code here(pwd/src/index.ts)
+Now we will update the scripts in the package.json to run our project
+in the scripts add
+	1)"dev" : "tsc -b && node ./dist/index.js"	 
+now we can just do npm run dev
