@@ -1,0 +1,29 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.connectDb = void 0;
+const pg_1 = require("pg");
+const pgclient = new pg_1.Client("postgresql://neondb_owner:npg_eTYdHhyNu7t3@ep-curly-rain-a4vdd0sn-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require");
+const connectDb = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield pgclient.connect();
+        console.log("DB connected successfully");
+        yield pgclient.query("CREATE TABLE IF NOT EXISTS users(id serial primary key,email varchar(50) unique not null,password varchar(50) not null,created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP);");
+        yield pgclient.query("CREATE TABLE IF NOT EXISTS address (id SERIAL PRIMARY KEY,user_id INTEGER NOT NULL,street VARCHAR(50) NOT NULL ,city VARCHAR(50) NOT NULL,country VARCHAR(20) NOT NULL, created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE);"); //delete cascade means if main parent i.e here the user of that id is delted then the address associaated wiht the id would be deleted automatically,
+        // instead we could also have used DELETE STRICT something ike this , in that for deleting the user ,first we would need to clear or delete the childrens first
+        return pgclient;
+    }
+    catch (e) {
+        console.log(e);
+    }
+});
+exports.connectDb = connectDb;
+exports.default = pgclient;
