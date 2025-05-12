@@ -1,0 +1,27 @@
+{
+  "name": "w_18-prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -b && node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "@types/express": "^5.0.1",
+    "express": "^5.1.0",
+    "prisma": "^6.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
