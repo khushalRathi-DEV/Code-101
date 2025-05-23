@@ -6,7 +6,7 @@ app.use(express.json());
 const client = new PrismaClient();
 console.log('Client created');
 
-app.use("/users",async(req,res) => {
+app.get("/users",async(req,res) => {
   try{
     const users = await client.user.findMany();
     res.json(users);
@@ -16,7 +16,7 @@ app.use("/users",async(req,res) => {
   }
 });
 
-app.use("/todod/:id",async(req,res) => {
+app.get("/todod/:id",async(req,res) => {
   try{
     const id = req.params.id;
     const user = await client.user.findFirst({
